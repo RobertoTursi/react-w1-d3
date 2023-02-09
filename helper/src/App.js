@@ -3,6 +3,7 @@ import './App.css';
 import CustomNav from './components/CustomNav';
 import Home from './components/Home';
 import ReservationForm from './components/ReservationForm';
+import ReservationList from './components/ReservationList';
 
 
 //per installare bootstrap scrivere nel terminale: npm i boostrap@5.2.3
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <CustomNav claim="Best pasta in town" />
+      <ReservationList />
       <ReservationForm />
       <Home />
     </>

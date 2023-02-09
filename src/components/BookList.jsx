@@ -11,7 +11,7 @@ class BookList extends Component{
     filterBookList = (e) => {
         e.preventDefault()
         console.log(this.state.inputValue)
-        this.setState({bookFilter: this.props.array.filter(book =>(book.title.toLowerCase.includes(this.state.inputValue.toLowerCase)))})
+        this.setState({bookFilter: this.props.array.filter(book =>(book.title.toLowerCase().includes(this.state.inputValue.toLowerCase())))})
     }
 
     render() {
@@ -55,3 +55,4 @@ class BookList extends Component{
 // )
 
 export default BookList
+

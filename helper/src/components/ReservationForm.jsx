@@ -48,27 +48,52 @@ class ReservationForm extends Component {
                 }})
     }
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault()
 
-        fetch("url dell'API", {
+        try{
+            const response = await fetch("url dell'API", {  //mettendo l'await tutto quello che viene dopo il fetch non verrà eseguito fino a quando la fetch non avrà finito
             method: "POST",
             body: JSON.stringify(this.state.reservation),
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then(response => {
-            if(response.ok) {
-                return response.json
-            } else {
-                alert("qualcosa è andato storto")
-            }
-        }).then((parsedBody) => {
-            alert("la richiesta è andata a buon fine, la risorsa è stata creata con id " + parsedBody._id)
-        }).catch(error => {
-            alert(error)
         })
+        if(response.ok) {
+            const parsedBody = await response.json()
+            alert("la richiesta è andata a buon fine, la risorsa è stata creata con id " + parsedBody._id)
+        } else {
+            alert("qualcosa è andato storto")
+        }} catch(err) {
+            alert("ERRORE FATALE", err)
+        }
+        
+        
+        
+
+        console.log(e)
     }
+    // handleSubmit = e => {
+    //     e.preventDefault()
+
+    //     fetch("url dell'API", {
+    //         method: "POST",
+    //         body: JSON.stringify(this.state.reservation),
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     }).then(response => {
+    //         if(response.ok) {
+    //             return response.json
+    //         } else {
+    //             alert("qualcosa è andato storto")
+    //         }
+    //     }).then((parsedBody) => {
+    //         alert("la richiesta è andata a buon fine, la risorsa è stata creata con id " + parsedBody._id)
+    //     }).catch(error => {
+    //         alert(error)
+    //     })
+    // }
 
     render() {
         return(
